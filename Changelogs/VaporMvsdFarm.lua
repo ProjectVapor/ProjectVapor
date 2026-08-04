@@ -141,7 +141,7 @@ content:GetPropertyChangedSignal("TextBounds"):Connect(updateScrollSize)
 
 local function setTab(tabName)
     if tabName == "Changelog" then
-        content.Text = "VaporMvsdFarm V1.2\n\n- Fixed the \"Level , XP progress\" in the webhook tab\n\n- Improved the embed, I added [Kills Made , Wins Made, Total Mvp , Total Gems , Gems Made , WinRate , KDR]\n\n- Fixed the issue with the teleporting as it was stopping , added a new feature \"Auto teleport to your pad\" every 5 mins so u wont be stopped on your farming.\n\n- Added \"Auto Buy\" tab as this will automatically allow you to purchase any of the cases in the shop while your farming.\n\n- Added \"Auto Open\" tab as this will automatically open the selected case for you. also have \"Open Selected Case\" as it will only open once. & \"Open Random Cases\" as it will automatically open any case in your inventory\n\n- Added \"Auto Claim Rewards\" as this will claim all of your battlepass rewards"
+        content.Text = "VaporMvsdFarm V1.3\n\n+ Added New case \"Cabana\" in Autobuy tab\n- fixed Autospin feature\n\n- Updated the list in Auto open tab \"Select Case\" added **Luau , Cabana , Premium Cabana Cases** \n\n- Updated Autofarm tab, You are now fully under the pad, username would not show. You can also now farm both sides **Left or Right**\n\n- Added Gun Kill all in the autofarm tab, removed the kill tab."
     end
     task.wait()
     updateScrollSize()
