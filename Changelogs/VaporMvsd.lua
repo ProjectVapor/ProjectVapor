@@ -51,14 +51,14 @@ local main = Instance.new("Frame")
 main.Parent = screenGui
 main.Size = uiSize
 main.Position = uiPosition
-main.BackgroundColor3 = Color3.fromRGB(0,0,0)
+main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 main.BorderSizePixel = 0
 main.BackgroundTransparency = 0
 main.ClipsDescendants = false
 
 local outline = Instance.new("UIStroke")
 outline.Parent = main
-outline.Color = Color3.fromRGB(255,255,255)
+outline.Color = Color3.fromRGB(255, 255, 255)
 outline.Thickness = 2
 
 local corner = Instance.new("UICorner", main)
@@ -77,7 +77,7 @@ title.Size = UDim2.new(1, 0, 0, titleHeight)
 title.Text = "ProjectVapor"
 title.TextScaled = true
 title.BackgroundTransparency = 1
-title.TextColor3 = Color3.new(1,1,1)
+title.TextColor3 = Color3.new(1, 1, 1)
 title.Font = Enum.Font.GothamBold
 title.TextStrokeTransparency = 0.5
 
@@ -109,15 +109,15 @@ contentContainer.Position = UDim2.new(0, 10, 0, contentOffset + 15)
 contentContainer.BackgroundTransparency = 1
 contentContainer.BorderSizePixel = 0
 contentContainer.ScrollBarThickness = 4
-contentContainer.ScrollBarImageColor3 = Color3.fromRGB(150,150,150)
+contentContainer.ScrollBarImageColor3 = Color3.fromRGB(150, 150, 150)
 contentContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
 
 local content = Instance.new("TextLabel")
 content.Parent = contentContainer
 content.Size = UDim2.new(1, -scrollPadding, 1, 0)
-content.Position = UDim2.new(0, scrollPadding/2, 0, 0)
+content.Position = UDim2.new(0, scrollPadding / 2, 0, 0)
 content.BackgroundTransparency = 1
-content.TextColor3 = Color3.new(1,1,1)
+content.TextColor3 = Color3.new(1, 1, 1)
 content.TextWrapped = true
 content.TextYAlignment = Enum.TextYAlignment.Top
 content.TextXAlignment = Enum.TextXAlignment.Left
@@ -141,7 +141,7 @@ content:GetPropertyChangedSignal("TextBounds"):Connect(updateScrollSize)
 
 local function setTab(tabName)
     if tabName == "Changelog" then
-        content.Text = "VaporMvsd V1.1\n\n- Improved Gun Kill all (Very fast now) in the (Rage Tab)\n\n- Fixed the Gun Cooldown mode \"Rapid\" for Pc. as it was still applying force after the match, it's fixed now and now works only in match.\n\n- Added \"Auto Use Spins\" as it will automatically use all your spins quickly\n\n- Added \"Spectators\" in the (Misc Tab) as you can see who is spectating you."
+        content.Text = "A new update is coming soon, I will be adding new features, making sure our VaporMvsd script becomes V2 very soon. Stay tune!"
     end
     task.wait()
     updateScrollSize()
@@ -155,8 +155,8 @@ local function createTab(tabName, position)
     tabButton.Size = UDim2.new(0.45, -5, 1, 0)
     tabButton.Position = UDim2.new(position, 0, 0, 0)
     tabButton.Text = tabName
-    tabButton.TextColor3 = Color3.new(1,1,1)
-    tabButton.BackgroundColor3 = Color3.fromRGB(30,30,30)
+    tabButton.TextColor3 = Color3.new(1, 1, 1)
+    tabButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     tabButton.Font = Enum.Font.GothamBold
     tabButton.TextScaled = true
     tabButton.AutoButtonColor = false
@@ -165,14 +165,14 @@ local function createTab(tabName, position)
     tabCorner.CornerRadius = UDim.new(0, 8)
     
     local tabStroke = Instance.new("UIStroke", tabButton)
-    tabStroke.Color = Color3.new(1,1,1)
+    tabStroke.Color = Color3.new(1, 1, 1)
     tabStroke.Thickness = 1
     
     tabButton.MouseButton1Click:Connect(function()
         if activeTab then
-            activeTab.BackgroundColor3 = Color3.fromRGB(30,30,30)
+            activeTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
         end
-        tabButton.BackgroundColor3 = Color3.fromRGB(60,60,60)
+        tabButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         activeTab = tabButton
         setTab(tabName)
     end)
@@ -182,7 +182,7 @@ end
 
 local changelogTab = createTab("Changelog", 0)
 
-changelogTab.BackgroundColor3 = Color3.fromRGB(60,60,60)
+changelogTab.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 activeTab = changelogTab
 setTab("Changelog")
 
