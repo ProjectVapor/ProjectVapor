@@ -111,10 +111,11 @@ contentContainer.BorderSizePixel = 0
 contentContainer.ScrollBarThickness = 4
 contentContainer.ScrollBarImageColor3 = Color3.fromRGB(150, 150, 150)
 contentContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
+contentContainer.AutomaticCanvasSize = Enum.AutomaticSize.None
 
 local content = Instance.new("TextLabel")
 content.Parent = contentContainer
-content.Size = UDim2.new(1, -scrollPadding, 1, 0)
+content.Size = UDim2.new(1, -scrollPadding, 0, 0)
 content.Position = UDim2.new(0, scrollPadding / 2, 0, 0)
 content.BackgroundTransparency = 1
 content.TextColor3 = Color3.new(1, 1, 1)
@@ -131,17 +132,93 @@ content.TextStrokeTransparency = 0.3
 content.RichText = true
 content.Text = ""
 
+local TextService = game:GetService("TextService")
+
+-- Strip rich text tags for accurate measurement
+local function stripRichText(text)
+    return (text:gsub("<[^>]->", ""))
+end
+
 local function updateScrollSize()
-    local textHeight = content.TextBounds.Y + 20
+    local containerWidth = contentContainer.AbsoluteSize.X - scrollPadding
+    if containerWidth <= 0 then
+        containerWidth = 500
+    end
+    local plainText = stripRichText(content.Text)
+    local measured = TextService:GetTextSize(
+        plainText,
+        content.TextSize,
+        content.Font,
+        Vector2.new(containerWidth, math.huge)
+    )
+    local textHeight = measured.Y + 20
     content.Size = UDim2.new(1, -scrollPadding, 0, textHeight)
     contentContainer.CanvasSize = UDim2.new(0, 0, 0, textHeight)
 end
 
-content:GetPropertyChangedSignal("TextBounds"):Connect(updateScrollSize)
+content:GetPropertyChangedSignal("Text"):Connect(updateScrollSize)
+contentContainer:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateScrollSize)
 
 local function setTab(tabName)
     if tabName == "Changelog" then
-        content.Text = "A new update is coming soon, I will be adding new features, making sure our VaporMvsd script becomes V2 very soon. Stay tune!"
+        content.Text = [[VaporMvsd V1.4
+
+Aimbot tab:
+
+- Added FOV Mode dropdown with Mouse and Center options
+- Added optional Shiftlock toggle, now off by default so aimbot looks more legit
+- Aimbot can no longer be enabled in the lobby, it will also auto disables when a match ends
+- Trigger Bot was improved, added Hold Mode, Use FOV mode, separate Trigger FOV circle, and Alive Check
+- Fixed Triggerbot sliders, FOV Size, Trigger Delay, Trigger Radius, and Max Distance sliders and etc with proper ranges
+- Fixed Trigger Bot not respecting match state, it no longer fires in the lobby
+- Fixed Trigger Bot delay not actually throttling shots
+- Fixed Reset Aimbot Settings button to reset all new options
+
+
+Combat Tab:
+
++ Updated Wallbang + Silent Aim features in Combat tab
+
+- Added "Prediction Aim" right under Gun Features. Allows you to lead moving targets so shots actually land.
+
+
+Rage Tab:
+
++ improved the Gun Kill all
+
++ Improved the Knife Kill all
+
++ Improved the KnifeCrashAll, it's now stronger
+
+- Added "Mass Blind" feature, allows you to target a selected player blinding them with shroud & crashing them same time.
+
+
+Rage Tab 2:
+
+- Comes with features such as Sticking to nearby enemy's. [Stick position, Team check , Offset Distance & Height Offset]
+
+- Added "Stick Kill Aura" with a Kill Aura hit rate, which will stick to the enemy , and knife them instantly.
+
+- Added "Anti Aim" to where enemies only see you backwards.
+
+
+Misc 2 Tab:
+
++ Added "Auto Soul Reap", your gun will be equipped as well.
+
++ Added "AntiCrash"
+
+- Added "SafeSpot" feature, allows you to teleport to different areas to avoid getting killed or if u wanted to troll.
+
+
+Setting tab:
+
+Now has "View Latest Changelog"
+
+
+- Removed Rapid mode in Gun cooldown mode in combat tab. (That was for Pc users)
+- Removed the Kill all that used to be in the [Knife Crash All feature]
+- Removed BangSomeone in the Misc tab.]]
     end
     task.wait()
     updateScrollSize()
