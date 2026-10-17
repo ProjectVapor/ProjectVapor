@@ -160,7 +160,7 @@ contentContainer:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateScrollSi
 
 local function setTab(tabName)
     if tabName == "Changelog" then
-        content.Text = [[New update coming soon, Stay tunned #VaporMvsd V1.5 , and thank you so much everyone we have over 500k injections. We will be giving you a nice giveaway in discord/thru this script. So stay tunned for the new changes of ProjectVapor, A Message tab will be back for you guys to give your amazing suggestions for us to view or reporting bugs if you do not have access to discord.]]
+        content.Text = [[New update coming soon, Stay tunned #VaporMvsd V1.5 , and thank you so much everyone we have over 500k injections. We will be giving you a nice giveaway in our discord server and or thru this script. [for those who do not have discord will be able to still join the giveaway thru this script soon] So stay tunned for the new changes of ProjectVapor, A Message tab will be back for you guys to give your amazing suggestions for us to view or reporting bugs if you do not have access to discord. If you do have discord please join our server, we love our members and can't wait to provide more for the community!   You can find our discord server invite in the Home tab!]]
     end
     task.wait()
     updateScrollSize()
