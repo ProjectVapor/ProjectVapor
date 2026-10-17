@@ -134,7 +134,6 @@ content.Text = ""
 
 local TextService = game:GetService("TextService")
 
--- Strip rich text tags for accurate measurement
 local function stripRichText(text)
     return (text:gsub("<[^>]->", ""))
 end
@@ -161,64 +160,7 @@ contentContainer:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateScrollSi
 
 local function setTab(tabName)
     if tabName == "Changelog" then
-        content.Text = [[VaporMvsd V1.4
-
-Aimbot tab:
-
-- Added FOV Mode dropdown with Mouse and Center options
-- Added optional Shiftlock toggle, now off by default so aimbot looks more legit
-- Aimbot can no longer be enabled in the lobby, it will also auto disables when a match ends
-- Trigger Bot was improved, added Hold Mode, Use FOV mode, separate Trigger FOV circle, and Alive Check
-- Fixed Triggerbot sliders, FOV Size, Trigger Delay, Trigger Radius, and Max Distance sliders and etc with proper ranges
-- Fixed Trigger Bot not respecting match state, it no longer fires in the lobby
-- Fixed Trigger Bot delay not actually throttling shots
-- Fixed Reset Aimbot Settings button to reset all new options
-
-
-Combat Tab:
-
-+ Updated Wallbang + Silent Aim features in Combat tab
-
-- Added "Prediction Aim" right under Gun Features. Allows you to lead moving targets so shots actually land.
-
-
-Rage Tab:
-
-+ improved the Gun Kill all
-
-+ Improved the Knife Kill all
-
-+ Improved the KnifeCrashAll, it's now stronger
-
-- Added "Mass Blind" feature, allows you to target a selected player blinding them with shroud & crashing them same time.
-
-
-Rage Tab 2:
-
-- Comes with features such as Sticking to nearby enemy's. [Stick position, Team check , Offset Distance & Height Offset]
-
-- Added "Stick Kill Aura" with a Kill Aura hit rate, which will stick to the enemy , and knife them instantly.
-
-- Added "Anti Aim" to where enemies only see you backwards.
-
-
-Misc 2 Tab:
-
-+ Added "Auto Soul Reap", your gun will be equipped as well.
-
-+ Added "AntiCrash"
-
-- Added "SafeSpot" feature, allows you to teleport to different areas to avoid getting killed or if u wanted to troll.
-
-
-Setting tab:
-
-Now has "View Latest Changelog"
-
-
-- Removed Rapid mode in Gun cooldown mode in combat tab. (That was for Pc users)
-- Removed the Kill all that used to be in the [Knife Crash All feature]
-- Removed BangSomeone in the Misc tab.]]
+        content.Text = [[New update coming soon, Stay tunned #VaporMvsd V1.5 , and thank you so much everyone we have over 500k injections. We will be giving you a nice giveaway in discord/thru this script. So stay tunned for the new changes of ProjectVapor, A Message tab will be back for you guys to give your amazing suggestions for us to view or reporting bugs if you do not have access to discord.]]
     end
     task.wait()
     updateScrollSize()
